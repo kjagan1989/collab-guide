@@ -758,7 +758,7 @@ export default function Home() {
                   { q: "Partner's change broke the live site.", a: "Vercel dashboard \u2192 find last working deployment \u2192 \"Promote to Production.\" Fixed in 5 seconds." },
                   { q: "Want to try a new tech stack.", a: "Personal accounts only. Don\u2019t touch the org until it\u2019s proven." },
                   { q: "Claude Code can't find an API key.", a: "Check central .env \u2192 then project .env.local \u2192 then Vercel environment variables." },
-                  { q: "We both edited the same file.", a: "Git flags a \"merge conflict\" showing both versions. Claude Code resolves it." },
+                  { q: "We both edited the same file.", a: "If you changed different parts \u2014 Git merges them automatically, no issue. If you changed the same lines \u2014 Git marks both versions and asks you to pick. Tell Claude Code \"resolve the merge conflict\" and it fixes it for you. To avoid this: always tell Claude Code \"pull the latest changes\" before you start working." },
                   { q: "Accidentally pushed API keys to GitHub.", a: "Immediately regenerate the exposed keys on the service dashboard. Remove from code, push clean version." },
                 ].map((item, i) => (
                   <div key={i} className="border-b border-slate-100 pb-3 last:border-0">
