@@ -1,8 +1,8 @@
 export const REPORT_CONTENT = `
-# Empire Collaboration Guide — RevenueFlows AI
+# Collaboration Guide — RevenueFlows AI
 
 ## Who This Is For
-Jagan and Ishan — two partners building the RevenueFlows AI empire. Jagan runs operations and strategy from Edmonton, Canada. Ishan manages Antigravity (VS Code + Gemini) with MCP servers and integrations. Both use Claude Code.
+Jagan and Ishan — two partners building the RevenueFlows AI shared. Jagan runs operations and strategy from Edmonton, Canada. Ishan manages Antigravity (VS Code + Gemini) with MCP servers and integrations. Both use Claude Code.
 
 ---
 
@@ -27,7 +27,7 @@ The core issue: We're running a two-person company with single-person tooling. E
 ### Option A: Shared Organization
 Create a shared workspace that both partners own together. Like renting an office together instead of working from separate apartments.
 
-GITHUB: We create a GitHub Organization (e.g., "revenueflows-ai"). This is a shared space above both personal accounts. All empire repos move here. Both partners are members with push access. When Jagan commits, it shows as Jagan. When Ishan commits, it shows as Ishan. Full audit trail. Both can create branches, submit pull requests, and merge from one shared home.
+GITHUB: We create a GitHub Organization (e.g., "revenueflows-ai"). This is a shared space above both personal accounts. All shared repos move here. Both partners are members with push access. When Jagan commits, it shows as Jagan. When Ishan commits, it shows as Ishan. Full audit trail. Both can create branches, submit pull requests, and merge from one shared home.
 
 VERCEL: We create a Vercel Team and connect it to the GitHub org. Now there's only ONE Vercel watching the repos. When either partner pushes code, this one Vercel team picks it up and auto-deploys. No more "is it on Jagan's Vercel or Ishan's Vercel?" — there's only one. Both can see all deployments and roll back if something breaks.
 
@@ -118,7 +118,7 @@ Total time: approximately 12 minutes. All steps are on Ishan's side. Jagan just 
 ### Step 1: GitHub — Create an Organization (5 minutes)
 1. Go to github.com, click profile icon, "Your organizations", "New organization"
 2. Choose the FREE plan
-3. Name it "revenueflows-ai" or "empire-hq"
+3. Name it "revenueflows-ai" or "shared-hq"
 4. Settings, Members, Invite member, add Jagan's GitHub username
 5. Optionally move existing repos: Repo Settings, Danger Zone, Transfer ownership, select the org
 
@@ -307,15 +307,6 @@ A: Check Vercel project Environment Variables — SUPABASE_URL tells you.
 export const SECTION_IDS = [
   { id: "problem", title: "The Problem", number: 1 },
   { id: "options", title: "Options At Our Disposal", number: 2 },
-  { id: "analysis", title: "Analyzing Each Option", number: 3 },
-  { id: "decision", title: "The Decision", number: 4 },
-  { id: "implementation", title: "Implementation — Setup Steps", number: 5 },
-  { id: "github", title: "How GitHub Works", number: 6 },
-  { id: "vercel", title: "How Vercel Works", number: 7 },
-  { id: "supabase", title: "How Supabase Works", number: 8 },
-  { id: "workflow", title: "End-to-End Workflow", number: 9 },
-  { id: "where", title: "Where Should I Do This?", number: 10 },
-  { id: "api-keys", title: "API Keys & Secrets", number: 11 },
-  { id: "security", title: "Security Rules", number: 12 },
-  { id: "scenarios", title: "Common Scenarios", number: 13 },
+  { id: "implementation", title: "Implementation", number: 3 },
+  { id: "reference", title: "Quick Reference", number: 4 },
 ];

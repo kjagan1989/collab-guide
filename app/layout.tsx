@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Empire Collaboration Guide | RevenueFlows AI",
+  title: "Collaboration Guide | Ishan & Jagan",
   description:
-    "Complete guide to GitHub, Vercel, and Supabase collaboration for the RevenueFlows AI empire.",
+    "How Ishan and Jagan work together on GitHub, Vercel, and Supabase.",
 };
 
 export default function RootLayout({

@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const systemPrompt = `You are an AI assistant for the RevenueFlows AI Empire Collaboration Guide. Your job is to answer questions about GitHub, Vercel, Supabase collaboration, version control, deployment, and the team setup between Jagan and Ishan.
+    const systemPrompt = `You are an AI assistant for the Ishan & Jagan Collaboration Guide. Your job is to answer questions about GitHub, Vercel, Supabase collaboration, version control, deployment, and the team setup between Jagan and Ishan.
 
 IMPORTANT RULES:
 - ONLY answer based on the report content provided below. Do not make up information.
@@ -41,7 +41,7 @@ ${REPORT_CONTENT}`;
           Authorization: `Bearer ${apiKey}`,
           "Content-Type": "application/json",
           "HTTP-Referer": "https://collab-guide.vercel.app",
-          "X-Title": "Empire Collaboration Guide",
+          "X-Title": "Ishan Jagan Collaboration Guide",
         },
         body: JSON.stringify({
           model: "google/gemini-2.5-flash",
