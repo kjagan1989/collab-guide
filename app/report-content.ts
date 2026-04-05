@@ -25,46 +25,69 @@ The core issue: We're running a two-person company with single-person tooling. E
 ## SECTION 2: THREE OPTIONS WE CONSIDERED
 
 ### Option A: Shared Organization
-Create a shared GitHub org (like a company workspace). Both partners are members. All repos, deployments, and databases are accessible from one place.
+Create a shared workspace that both partners own together. Like renting an office together instead of working from separate apartments.
+
+GITHUB: We create a GitHub Organization (e.g., "revenueflows-ai"). This is a shared space above both personal accounts. All empire repos move here. Both partners are members with push access. When Jagan commits, it shows as Jagan. When Ishan commits, it shows as Ishan. Full audit trail. Both can create branches, submit pull requests, and merge from one shared home.
+
+VERCEL: We create a Vercel Team and connect it to the GitHub org. Now there's only ONE Vercel watching the repos. When either partner pushes code, this one Vercel team picks it up and auto-deploys. No more "is it on Jagan's Vercel or Ishan's Vercel?" — there's only one. Both can see all deployments and roll back if something breaks.
+
+SUPABASE: One person owns the Supabase project (whoever handles billing — Ishan). The other is invited as a team member. Both see the same database, tables, API keys, and dashboard. No password sharing. Each logs in with their own account.
+
+Used by: Every company, from 2-person startups to Fortune 500.
 
 PROS:
-- One source of truth — no "which repo is latest?" confusion
-- Both partners push code under their own names — full audit trail
-- Vercel auto-deploys from the shared repos — one deployment pipeline
-- Supabase shared via team membership — both see the same dashboard
-- Industry standard — this is how every company works
-- Revoking access is one click, no password changes
+- One source of truth — no version confusion
+- Both push code under their own names — full audit trail
+- One Vercel deployment pipeline
+- Industry standard
+- Revoking access is one click
+- Scales to more team members
 
 CONS:
-- Requires 12 minutes of setup (one-time)
-- Need to transfer existing repos and projects
+- 12 minutes of one-time setup
+- Need to transfer existing repos
 
 ### Option B: Fork + Pull Request Model
-Each person keeps their own GitHub/Vercel. One person's repo is the "source of truth." The other forks (copies) and submits pull requests (change proposals).
+Each person keeps their own separate accounts. One repo is the "source of truth." The other makes a copy (fork), works on it, sends changes back as a proposal (pull request).
+
+GITHUB: Ishan's GitHub has the main repo. Jagan "forks" it — creating a complete copy under his own GitHub. Jagan works on his copy, then submits a pull request. Ishan reviews and approves. Problem: Jagan's fork easily gets out of date. Every time Ishan makes changes, Jagan must manually sync his fork. Two copies of the same code floating around.
+
+VERCEL: Each person connects their own Vercel to their own GitHub repo. Two Vercels deploying two copies of the same project. Which one is the "real" site? Which URL do customers use? Confusing. If Jagan forgets to sync his fork, his Vercel deploys an outdated version.
+
+SUPABASE: Both apps need to point to the same database. But Jagan doesn't have access to Ishan's Supabase dashboard unless credentials are shared. Either share passwords (bad) or Jagan works with a separate test database and hopes structures stay in sync (fragile).
+
+Used by: Open-source projects with hundreds of strangers contributing. Not designed for partners.
 
 PROS:
 - No org setup needed
 - Clear separation of ownership
 
 CONS:
-- Too much friction for a two-person team
-- Designed for open-source contributors (strangers), not partners
-- Vercel deploys from two different places — confusing
-- Easy to get out of sync — "is your fork up to date?"
+- Too much friction for 2 people
+- Designed for strangers, not partners
+- Two Vercels deploying — confusing
+- Easy to get out of sync
 - Double the maintenance
 
 ### Option C: Monorepo with Ownership Boundaries
-One shared repo, but different folders mapped to different Vercel projects.
+Put everything into one single giant repository. Each person's projects get their own folder. Shared code goes in a shared folder.
+
+GITHUB: One repo with folders: /lead-manager (Jagan's), /antigravity (Ishan's), /shared (components both use). Both push to the same repo. Problem: one bad commit in any folder can affect the entire repo. If you break /shared, every project depending on it might break. The repo gets very large very fast.
+
+VERCEL: Multiple Vercel projects pointing to different folders within the same repo. Vercel can be configured to only deploy when specific folders change. But this configuration is tricky — needs "root directory" settings and "ignore build step" rules. More complex to set up and maintain.
+
+SUPABASE: No difference from Option A. Supabase doesn't care about repo structure. But managing database migrations becomes trickier with multiple apps in one repo.
+
+Used by: Google, Meta, and large companies with thousands of developers and deeply shared codebases. Overkill for us now, potentially useful later.
 
 PROS:
 - Shared code between projects is easy
-- One repo to rule them all
+- One repo to manage
 
 CONS:
-- Unnecessary complexity for current needs
-- One bad commit can affect multiple projects
-- CI/CD configuration gets complicated
-- May be useful later when we have shared components
+- Unnecessary complexity right now
+- One bad commit affects multiple projects
+- CI/CD config gets complicated
 
 ---
 

@@ -285,43 +285,151 @@ export default function Home() {
 
         {/* ── 2. OPTIONS ── */}
         <section>
-          <SectionHeader id="options" number={2} title="Options At Our Disposal" subtitle="Three approaches to solve the collaboration problem." />
+          <SectionHeader id="options" number={2} title="Options At Our Disposal" subtitle="Three approaches we evaluated. Here's exactly what each one means." />
 
-          <div className="grid gap-6">
+          <div className="grid gap-8">
             {/* Option A */}
             <Card>
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-2">
                 <span className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm flex items-center justify-center">A</span>
                 <h3 className="text-lg font-bold text-slate-900">Shared Organization</h3>
               </div>
-              <p className="text-slate-600 text-sm mb-4">
-                Create a shared workspace on GitHub (called an &quot;organization&quot;) and Vercel (called a &quot;team&quot;). All repos and deployments live there. Both partners are members.
+              <p className="text-slate-600 text-sm mb-6 ml-11">
+                Create a shared workspace that both partners own together. Think of it like <strong className="text-slate-800">renting an office together</strong> instead of working from separate apartments. Everything lives in one place, both people have keys.
               </p>
-              <p className="text-slate-500 text-xs italic mb-3">Think of it like renting an office together instead of working from separate apartments.</p>
+
+              <div className="space-y-4 ml-2">
+                <div className="p-5 bg-slate-50 border border-slate-100 rounded-xl">
+                  <h4 className="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">GH</span>
+                    What happens with GitHub
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    We create a GitHub <strong>Organization</strong> (e.g., &quot;revenueflows-ai&quot;). This is a shared space that sits above both our personal accounts. All empire repos move here. Both of us are members with push access. When Jagan commits code, it shows as Jagan. When Ishan commits, it shows as Ishan. Full audit trail of who did what. Both can create branches, submit pull requests, and merge &mdash; from one shared home.
+                  </p>
+                </div>
+
+                <div className="p-5 bg-slate-50 border border-slate-100 rounded-xl">
+                  <h4 className="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">VC</span>
+                    What happens with Vercel
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    We create a Vercel <strong>Team</strong> and connect it to the GitHub org. Now there&apos;s only ONE Vercel watching the repos. When either of us pushes code to GitHub, this one Vercel team picks it up and auto-deploys. No more &quot;is it on Jagan&apos;s Vercel or Ishan&apos;s Vercel?&quot; &mdash; there&apos;s only one. Both partners are team members, both can see all deployments, both can roll back if something breaks.
+                  </p>
+                </div>
+
+                <div className="p-5 bg-slate-50 border border-slate-100 rounded-xl">
+                  <h4 className="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">SB</span>
+                    What happens with Supabase
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    One person owns the Supabase project (whoever handles billing &mdash; in our case, Ishan). The other is invited as a <strong>team member</strong>. Both partners see the same database, same tables, same API keys, same dashboard. No need to share passwords. Each logs in with their own account.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-slate-500 text-xs italic mt-4 ml-2">Used by: Every company, from 2-person startups to Fortune 500. This is the standard.</p>
             </Card>
 
             {/* Option B */}
             <Card>
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-2">
                 <span className="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 font-bold text-sm flex items-center justify-center">B</span>
                 <h3 className="text-lg font-bold text-slate-900">Fork + Pull Request Model</h3>
               </div>
-              <p className="text-slate-600 text-sm mb-4">
-                Each person keeps their own accounts. One person&apos;s repo is the &quot;source of truth.&quot; The other makes a copy (fork), works on it, then sends changes back for review (pull request).
+              <p className="text-slate-600 text-sm mb-6 ml-11">
+                Each person keeps their own separate accounts. One person&apos;s repo is the &quot;source of truth.&quot; The other person makes a <strong className="text-slate-800">copy</strong> (called a &quot;fork&quot;), works on their copy, then sends their changes back as a proposal (called a &quot;pull request&quot;). The owner reviews and approves.
               </p>
-              <p className="text-slate-500 text-xs italic">Used by open-source projects with hundreds of strangers contributing.</p>
+
+              <div className="space-y-4 ml-2">
+                <div className="p-5 bg-slate-50 border border-slate-100 rounded-xl">
+                  <h4 className="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">GH</span>
+                    What happens with GitHub
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    Ishan&apos;s GitHub has the main repo. Jagan &quot;forks&quot; it &mdash; creating a complete copy under his own GitHub. Jagan works on his copy, then submits a pull request saying &quot;here are my changes, please merge them into the main repo.&quot; Ishan reviews and approves. The problem: Jagan&apos;s fork can easily get out of date. Every time Ishan makes changes, Jagan has to manually sync his fork. Two copies of the same code floating around.
+                  </p>
+                </div>
+
+                <div className="p-5 bg-slate-50 border border-slate-100 rounded-xl">
+                  <h4 className="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">VC</span>
+                    What happens with Vercel
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    Each person connects their own Vercel to their own GitHub repo. So now there are <strong>two Vercels deploying two copies</strong> of the same project. Ishan&apos;s Vercel deploys from the main repo. Jagan&apos;s Vercel deploys from his fork. Which one is the &quot;real&quot; site? Which URL do you share with customers? It gets confusing fast. And if Jagan forgets to sync his fork, his Vercel deploys an outdated version.
+                  </p>
+                </div>
+
+                <div className="p-5 bg-slate-50 border border-slate-100 rounded-xl">
+                  <h4 className="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">SB</span>
+                    What happens with Supabase
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    Both apps (Ishan&apos;s and Jagan&apos;s fork) would need to point to the same Supabase database. But Jagan doesn&apos;t have access to Ishan&apos;s Supabase dashboard unless credentials are shared. So either you share passwords (bad), or Jagan works with a separate test database and hopes the data structure stays in sync (fragile).
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-slate-500 text-xs italic mt-4 ml-2">Used by: Open-source projects where hundreds of strangers contribute to code they don&apos;t own. Not designed for partners.</p>
             </Card>
 
             {/* Option C */}
             <Card>
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-2">
                 <span className="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 font-bold text-sm flex items-center justify-center">C</span>
                 <h3 className="text-lg font-bold text-slate-900">Monorepo with Ownership Boundaries</h3>
               </div>
-              <p className="text-slate-600 text-sm mb-4">
-                One giant repo with separate folders for each person&apos;s projects. Each folder maps to a different deployment.
+              <p className="text-slate-600 text-sm mb-6 ml-11">
+                Put <strong className="text-slate-800">everything</strong> into one single giant repository. Each person&apos;s projects get their own folder. Shared code goes in a shared folder. Each folder can be deployed separately.
               </p>
-              <p className="text-slate-500 text-xs italic">Used by large companies (Google, Meta) with thousands of developers.</p>
+
+              <div className="space-y-4 ml-2">
+                <div className="p-5 bg-slate-50 border border-slate-100 rounded-xl">
+                  <h4 className="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">GH</span>
+                    What happens with GitHub
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                    One single repo with a folder structure like:
+                  </p>
+                  <div className="bg-white border border-slate-200 rounded-lg p-3 font-mono text-xs text-slate-600 mb-3">
+                    <div>/lead-manager &nbsp;&nbsp;&nbsp;&rarr; Jagan&apos;s project</div>
+                    <div>/antigravity &nbsp;&nbsp;&nbsp;&nbsp;&rarr; Ishan&apos;s project</div>
+                    <div>/shared &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; shared components</div>
+                    <div>/ai-tools &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; Jagan&apos;s project</div>
+                  </div>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    Both partners push to the same repo. The problem: one bad commit in any folder can affect the entire repo. If you accidentally break something in /shared, every project that depends on it might break too. Also, the repo gets very large very fast.
+                  </p>
+                </div>
+
+                <div className="p-5 bg-slate-50 border border-slate-100 rounded-xl">
+                  <h4 className="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">VC</span>
+                    What happens with Vercel
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    You set up <strong>multiple Vercel projects</strong> pointing to different folders within the same repo. Vercel can be configured to only deploy when files in a specific folder change. But this configuration is tricky &mdash; you need &quot;root directory&quot; settings and &quot;ignore build step&quot; rules. It works, but it&apos;s more complex to set up and maintain than having separate repos.
+                  </p>
+                </div>
+
+                <div className="p-5 bg-slate-50 border border-slate-100 rounded-xl">
+                  <h4 className="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">SB</span>
+                    What happens with Supabase
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    No difference from Option A &mdash; Supabase doesn&apos;t care about your repo structure. Each project within the monorepo connects to whatever Supabase project it needs. But managing database migrations becomes trickier when multiple apps share one repo.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-slate-500 text-xs italic mt-4 ml-2">Used by: Google, Meta, and large companies with thousands of developers and deeply shared codebases. Overkill for us right now, but potentially useful later.</p>
             </Card>
           </div>
         </section>
