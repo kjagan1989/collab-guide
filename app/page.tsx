@@ -526,6 +526,148 @@ export default function Home() {
           </div>
 
           <div className="space-y-3">
+            <RefSection title="How GitHub Works">
+              <div className="mt-4 space-y-4">
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">What is GitHub?</p>
+                  <p className="text-sm text-slate-600">Where your code is stored and version-tracked. Every change is saved forever. You can go back to any previous version at any time.</p>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">The 3-step process: Edit &rarr; Commit &rarr; Push</p>
+                  <ul className="space-y-2">
+                    <Bullet><strong>Edit</strong> &mdash; Change code on your computer. Only you can see it.</Bullet>
+                    <Bullet><strong>Commit</strong> &mdash; Save with a note explaining what you changed (e.g., &quot;Fixed contact form&quot;). Each commit is a permanent snapshot of your entire project.</Bullet>
+                    <Bullet><strong>Push</strong> &mdash; Upload your commits to GitHub (the cloud). Now your partner can see them. Vercel auto-deploys.</Bullet>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Version History</p>
+                  <ul className="space-y-2">
+                    <Bullet>Completely automatic. Every commit is saved forever.</Bullet>
+                    <Bullet>You can see a full timeline: who changed what, when, and why.</Bullet>
+                    <Bullet>You can go back to any point in history at any time.</Bullet>
+                    <Bullet>Nothing is ever deleted &mdash; even reverted changes stay in the history.</Bullet>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Branches</p>
+                  <ul className="space-y-2">
+                    <Bullet>A branch is a parallel copy of your code where you can experiment without affecting the live version.</Bullet>
+                    <Bullet><strong>main</strong> branch = the live website. Don&apos;t experiment here.</Bullet>
+                    <Bullet><strong>Feature branch</strong> = your sandbox. Work here, test, then merge into main when ready.</Bullet>
+                    <Bullet>If your experiment fails, just delete the branch. Main was never touched.</Bullet>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Pull Requests (PRs)</p>
+                  <ul className="space-y-2">
+                    <Bullet>A formal request saying &quot;I made these changes on my branch, please review and merge into main.&quot;</Bullet>
+                    <Bullet>Your partner can review the changes, comment, request modifications, or approve.</Bullet>
+                    <Bullet>Creates a clear record of what changed and why.</Bullet>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Reverting</p>
+                  <ul className="space-y-2">
+                    <Bullet>Tell Claude Code: &quot;Revert to the version before I broke X&quot;</Bullet>
+                    <Bullet>The broken version stays in history (nothing deleted), active code goes back to working version.</Bullet>
+                    <Bullet>Push the revert, Vercel auto-deploys the fix.</Bullet>
+                  </ul>
+                </div>
+              </div>
+            </RefSection>
+
+            <RefSection title="How Vercel Works">
+              <div className="mt-4 space-y-4">
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">What is Vercel?</p>
+                  <p className="text-sm text-slate-600">Takes your code from GitHub, builds it into a working website, and serves it at a URL. You never manually deploy &mdash; push to GitHub and Vercel does the rest.</p>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">The Deployment Chain</p>
+                  <ul className="space-y-2">
+                    <Bullet>Push code to GitHub</Bullet>
+                    <Bullet>Vercel detects the change within seconds</Bullet>
+                    <Bullet>Vercel builds your app automatically</Bullet>
+                    <Bullet>Site is live at your URL</Bullet>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Deployment History</p>
+                  <ul className="space-y-2">
+                    <Bullet>Every push creates a separate deployment. All are saved.</Bullet>
+                    <Bullet>You can see a list of every deployment in the Vercel dashboard.</Bullet>
+                    <Bullet>Each one is a fully working version of your site with its own URL.</Bullet>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Preview Deployments</p>
+                  <ul className="space-y-2">
+                    <Bullet>Push to a branch (not main) &rarr; Vercel creates a <strong>preview URL</strong> just for that branch.</Bullet>
+                    <Bullet>Only you can see it. The live site is not affected.</Bullet>
+                    <Bullet>Test it, verify it works, then merge to main to go live.</Bullet>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Reverting (Vercel&apos;s Superpower)</p>
+                  <ul className="space-y-2">
+                    <Bullet>Site broke? Go to Vercel dashboard &rarr; find the last working deployment &rarr; click &quot;Promote to Production&quot;</Bullet>
+                    <Bullet><strong>Fixed in 5 seconds. One click. No code changes needed.</strong></Bullet>
+                    <Bullet>Then fix the code on a new branch at your own pace.</Bullet>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Environment Variables</p>
+                  <ul className="space-y-2">
+                    <Bullet>API keys for production go in Vercel&apos;s dashboard: Project &rarr; Settings &rarr; Environment Variables.</Bullet>
+                    <Bullet>Encrypted and secure. Never visible in code or Git history.</Bullet>
+                  </ul>
+                </div>
+              </div>
+            </RefSection>
+
+            <RefSection title="How Supabase Works">
+              <div className="mt-4 space-y-4">
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">What is Supabase?</p>
+                  <p className="text-sm text-slate-600">Your database &mdash; where data lives. Leads, users, settings, anything your app needs to remember. Your apps read and write to it automatically.</p>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Two Types of Changes</p>
+                  <ul className="space-y-2">
+                    <Bullet><strong>Data changes (low risk)</strong> &mdash; Adding, editing, or deleting rows. Happens in real-time as the app runs. Like editing a spreadsheet.</Bullet>
+                    <Bullet><strong>Structure changes (HIGH risk)</strong> &mdash; Adding or removing tables, columns, or changing field types. If you delete a column, all the data in that column is gone forever.</Bullet>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Version History &mdash; NOT Automatic</p>
+                  <p className="text-sm text-slate-600 mb-2">Unlike GitHub and Vercel, Supabase does <strong>not</strong> auto-save versions. You need to use these safeguards:</p>
+                  <ul className="space-y-2">
+                    <Bullet><strong>Daily backups</strong> (paid plans) &mdash; Restore your entire database to yesterday from the dashboard.</Bullet>
+                    <Bullet><strong>Migrations</strong> &mdash; Like &quot;commits for your database structure.&quot; Claude Code can create these. If something goes wrong, roll them back.</Bullet>
+                    <Bullet><strong>Point-in-time recovery</strong> (higher plans) &mdash; Restore to any specific minute. Like rewinding a video.</Bullet>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Reverting</p>
+                  <ul className="space-y-2">
+                    <Bullet><strong>Wrong data</strong> (accidentally deleted rows) &mdash; Restore from daily backup or point-in-time recovery.</Bullet>
+                    <Bullet><strong>Wrong structure</strong> (accidentally deleted a column) &mdash; Roll back migration, or restore from backup.</Bullet>
+                    <Bullet>Worst case &mdash; Contact Supabase support.</Bullet>
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 mb-2">Testing Safely</p>
+                  <ul className="space-y-2">
+                    <Bullet><strong>Never experiment on the production database.</strong></Bullet>
+                    <Bullet>Use Jagan&apos;s personal Supabase for testing.</Bullet>
+                    <Bullet>Create a test project, copy the table structure (not real data), fill with fake data.</Bullet>
+                    <Bullet>Once everything works, apply the same changes to production.</Bullet>
+                  </ul>
+                </div>
+              </div>
+            </RefSection>
+
             <RefSection title="Where Should I Do This? (Cheat Sheet)">
               <div className="overflow-x-auto mt-4">
                 <table className="w-full text-sm">
