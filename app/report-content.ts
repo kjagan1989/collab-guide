@@ -295,58 +295,34 @@ Q: Claude Code can't find API key?
 A: Check central .env first, then project .env.local, then Vercel environment variables.
 
 Q: Both edited same file simultaneously?
-A: Here is exactly what happens step by step:
-1. You and your partner both make changes to the same file on your own computers.
-2. One person pushes their changes to GitHub first. This works fine — no problem.
-3. The second person tries to push. GitHub says "hold on, someone changed this file after you last downloaded it."
-4. The second person needs to "pull" (download) the latest version first. Git will try to combine both sets of changes automatically.
-5. If you both changed DIFFERENT parts of the file — Git merges them automatically. Done. No issue.
-6. If you both changed the SAME lines — Git can't decide which version to keep. It marks those specific lines with both versions and says "you pick." This is called a "merge conflict."
-7. What you see: The file will have markers showing "Jagan's version" and "Ishan's version" for the conflicting lines. Everything else is already merged.
-8. What you do: Tell Claude Code "resolve the merge conflict in [filename]." Claude Code looks at both versions, picks the right combination, and fixes it for you. You commit and push. Done.
-9. To AVOID this entirely: Before you start working, tell Claude Code "pull the latest changes." This downloads your partner's latest work so you're starting from the same version.
+A: If you changed different parts of the file — no problem, Git combines them automatically. If you changed the same lines — Git asks you to pick which version to keep. Tell Claude Code "resolve the merge conflict" and it fixes it. To avoid this: tell Claude Code "pull the latest changes" before you start working.
 
 Q: Accidentally pushed secrets to GitHub?
-A: This is urgent. Here is what to do immediately:
-1. Go to the service dashboard where the key was created (e.g., Supabase dashboard, OpenRouter dashboard).
-2. Regenerate / rotate the API key. This makes the old key stop working instantly, even though it's visible in the Git history.
-3. Copy the new key.
-4. Update your local .env file with the new key.
-5. Update Vercel Environment Variables with the new key (Project → Settings → Environment Variables).
-6. Tell Claude Code to make sure the .env file is in .gitignore (it should already be).
-7. Push a clean commit. The old commit with the exposed key still exists in Git history, but it doesn't matter because the key has been regenerated and the old one no longer works.
+A: Go to the service dashboard (Supabase, OpenRouter, etc.) and regenerate the API key. This kills the old key instantly. Update your .env file and Vercel Environment Variables with the new key. Done — the old key in Git history no longer works.
 
 Q: How to know which Supabase a Vercel app uses?
-A: Go to Vercel → click the project → Settings → Environment Variables. Look for SUPABASE_URL. The URL tells you which Supabase project it connects to. It will look something like "https://abcdefg.supabase.co" — that ID matches a specific project in your Supabase dashboard.
+A: Vercel → click the project → Settings → Environment Variables → look for SUPABASE_URL. That tells you which Supabase project it connects to.
 
 Q: What does "commit" mean?
-A: A commit is saving your work with a description. When you change code on your computer, those changes only exist on your machine. A "commit" packages up all your changes and saves them as a snapshot with a message like "Added phone number field to lead form." After committing, you "push" to upload that snapshot to GitHub so your partner can see it and Vercel can deploy it. Each commit is permanent — you can always go back to any previous commit.
+A: Saving your work with a short description of what you changed. Like clicking "Save" with a note. Claude Code does this for you — just tell it "commit with message [what you changed]."
 
 Q: What does "push" mean?
-A: Push means uploading your committed changes from your computer to GitHub (the cloud). Before you push, your work only exists on your machine. After you push, your partner can see it, and Vercel automatically picks it up and deploys it. You tell Claude Code "push to GitHub" and it does it.
+A: Uploading your saved work from your computer to GitHub. After you push, your partner can see your changes and Vercel auto-deploys. Tell Claude Code "push" and it handles it.
 
 Q: What does "pull" mean?
-A: Pull means downloading the latest changes from GitHub to your computer. If your partner pushed changes, you need to "pull" to get their latest work before you start making your own changes. Tell Claude Code "pull the latest changes" before starting work. This prevents merge conflicts.
+A: Downloading your partner's latest changes from GitHub to your computer. Always do this before starting work. Tell Claude Code "pull the latest changes."
 
 Q: What is a branch?
-A: A branch is a separate copy of your code where you can make changes without affecting the live website. The "main" branch is the live site — customers see this. You create a new branch (e.g., "add-phone-field"), make your changes there, test them using Vercel's preview URL, and when everything works, you merge (combine) your branch back into main. If your experiment fails, you just delete the branch — the live site was never touched.
+A: A separate copy of your code where you can experiment without affecting the live site. When it works, you merge it into the live version. When it fails, you delete it — the live site was never touched.
 
 Q: What is a pull request?
-A: A pull request (PR) is a formal way of saying "I made changes on my branch, please review them before they go live." You create a PR on GitHub, your partner can see exactly what changed, leave comments, ask for modifications, or approve it. Once approved, the changes merge into the main branch and Vercel auto-deploys. It's optional for a two-person team — you can also merge directly — but it creates a nice record of what changed and why.
+A: A request saying "I made changes, please review before they go live." Your partner can review, comment, or approve. Optional for a two-person team but creates a nice record of changes.
 
 Q: How do I start working on a project?
-A: Step by step:
-1. Tell Claude Code "clone [repo name] from the org" — this downloads the project to your computer.
-2. Tell Claude Code "pull the latest changes" — makes sure you have the most recent version.
-3. Tell Claude Code "create a new branch called [describe-your-change]" — this creates a safe sandbox.
-4. Make your changes (Claude Code helps you write code).
-5. Tell Claude Code "commit with message [what you changed]" — saves your work.
-6. Tell Claude Code "push" — uploads to GitHub. Vercel creates a preview URL.
-7. Check the preview URL to make sure everything works.
-8. Tell Claude Code "create a pull request" or "merge to main" — goes live.
+A: Tell Claude Code: "pull the latest changes" → "create a new branch called [your-feature]" → make your changes → "commit" → "push" → check the preview URL Vercel creates → "merge to main" when ready.
 
 Q: Do I need to know how to code?
-A: No. Claude Code writes the code for you. You describe what you want in plain English ("add a phone number field to the lead form") and Claude Code builds it. You still need to understand the workflow (branch → commit → push → preview → merge) but the actual coding is handled by AI.
+A: No. Claude Code writes the code. You describe what you want in plain English. You just need to understand the workflow: branch → commit → push → preview → merge.
 `;
 
 export const SECTION_IDS = [
